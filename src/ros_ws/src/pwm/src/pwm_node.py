@@ -10,25 +10,25 @@ SERVO_CHANNEL = 14
 pwm = Adafruit_PCA9685.PCA9685()
 pwm.set_pwm_freq(PWM_FREQ)
 
-def set_pulse(pwm, channel, frequency, pulse):
-    pulse = frequency * pulse * 4096
+def set_pulse(channel, pulse):
+    pulse = PWM_FREQ * pulse * 4096
     pwm.set_pwm(channel, 0, int(pulse))
 
-def set_value(pwm, channel, frequency, value):
+def set_value(channel, value):
     value = min(max(value, -1.0), 1.0)
     pulse = 0.0015 + value * 0.0005
-    set_pulse(pwm, channel, frequency, pulse)
+    set_pulse(channel, pulse)
     rospy.logdebug("set pulse: %f on channel channel %d", pulse, channel)
 
 def motor_callback(data):
     value = data.data
     rospy.logdebug(rospy.get_caller_id() + "motor: %f", value)
-    set_value(pwm, MOTOR_CHANNEL, MOTOR_FREQ, value)
+    set_value(MOTOR_CHANNEL, value)
 
 def servo_callback(data):
     value = data.data
     rospy.logdebug(rospy.get_caller_id() + "servo %f", value)
-    set_value(pwm, SERVO_CHANNEL, SERVO_FREQ, value)
+    set_value(SERVO_CHANNEL, value)
     
 def main():
     rospy.init_node('pwm')
