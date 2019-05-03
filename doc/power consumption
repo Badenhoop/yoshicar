@@ -1,0 +1,8 @@
+Power Consumption
+-----------------
+
+Raspberry Pi 3b+ (full load)        1000ma
+4x Motor (4x600ma)                  2400ma
+LIDAR                               1000ma
+
+total                               4400ma
