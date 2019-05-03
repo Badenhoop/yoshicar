@@ -1,9 +1,0 @@
-- start building the app only when everything else works (since all the nasty networking stuff is nothing new to learn)
-- figure out how to send ros messages from laptop to raspberry pi
-- avoid using rosjava/android-core since repo seems to be extremely unmaintained and depricated
-- channels of communication:
-    - mode selection (manual vs autonomous navigation) (service)
-    - manual steering commands (datagram)
-    - navigation commands (datagram)
-    - occupancy grid (periodical service, can have slow update rate)
-- server side implementation: NetworkingLib
