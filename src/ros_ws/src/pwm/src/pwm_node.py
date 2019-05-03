@@ -3,14 +3,12 @@ import rospy
 from std_msgs.msg import Float64
 import Adafruit_PCA9685
 
-MOTOR_FREQ = 50
+PWM_FREQ = 50
 MOTOR_CHANNEL = 13
-
-SERVO_FREQ = 50
 SERVO_CHANNEL = 14
 
 pwm = Adafruit_PCA9685.PCA9685()
-pwm.set_pwm_freq(MOTOR_FREQ)
+pwm.set_pwm_freq(PWM_FREQ)
 
 def set_pulse(pwm, channel, frequency, pulse):
     pulse = frequency * pulse * 4096
