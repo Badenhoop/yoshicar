@@ -1,30 +1,27 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import rospy
 from std_msgs.msg import Float64
 from adafruit_servokit import ServoKit
 
-PWM_FREQ = 50
-MOTOR_CHANNEL = 13
-SERVO_CHANNEL = 14
-
-kit = ServoKit(channels=16)
-kit.servo[MOTOR_CHANNEL].set_pulse_width_range(1000, 2000)
-kit.servo[SERVO_CHANNEL].set_pulse_width_range(1000, 2000)
-
-def motor_callback(data):
+def callback(data, args):
+    kit, channel, name = args
     value = min(max(data.data, -1.0), 1.0)
-    rospy.logdebug(rospy.get_caller_id() + "motor: %f", value)
-    kit.continuous_servo[MOTOR_CHANNEL].throttle = value
-
-def servo_callback(data):
-    value = min(max(data.data, -1.0), 1.0)
-    rospy.logdebug(rospy.get_caller_id() + "servo %f", value)
-    kit.continuous_servo[SERVO_CHANNEL].throttle = value
+    rospy.logdebug(rospy.get_caller_id() + '%s: %f', name, value)
+    kit.continuous_servo[channel].throttle = value
     
 def main():
     rospy.init_node('pwm')
-    rospy.Subscriber("pwm/motor", Float64, motor_callback)
-    rospy.Subscriber("pwm/servo", Float64, servo_callback)
+
+    motor_channel = rospy.get_param('pwm/motor_channel', 0)
+    servo_channel = rospy.get_param('pwm/servo_channel', 1)
+    rospy.loginfo('motor_channel: %d', motor_channel)
+
+    kit = ServoKit(channels=16)
+    kit.continuous_servo[motor_channel].set_pulse_width_range(1000, 2000)
+    kit.continuous_servo[servo_channel].set_pulse_width_range(1000, 2000)
+
+    rospy.Subscriber("pwm/motor", Float64, callback, (kit, motor_channel, 'motor'))
+    rospy.Subscriber("pwm/servo", Float64, callback, (kit, servo_channel, 'servo'))
     rospy.spin()
   
 if __name__ == '__main__':
