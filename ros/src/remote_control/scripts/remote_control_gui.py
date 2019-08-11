@@ -3,7 +3,6 @@ import rospy
 from std_msgs.msg import Float64
 import pygame
 import sys
-from pexpect import pxssh
 from pygame.locals import *
 import threading
 import sys
@@ -86,7 +85,7 @@ def main():
     buttonsSurface.fill(BACKGROUND_COLOR)
 
     speed_modes_forward = [0.2, 0.3, 0.4]
-    speed_modes_backward = [-0.2, -0.3, -0.4]
+    speed_modes_backward = [-1.0, -0.3, -0.4]
     curr_speed_mode = 0
     zero_speed = 0
     max_angle = 1.0
