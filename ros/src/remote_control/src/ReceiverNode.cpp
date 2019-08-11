@@ -19,16 +19,17 @@ auto duration(double seconds)
 int main(int argc, char **argv)
 {
 	ros::init(argc, argv, "remote_control_receiver_node");
-	ros::NodeHandle n;
-	ros::Publisher motorPublisher = n.advertise<std_msgs::Float64>("motor", 1);
-	ros::Publisher servoPublisher = n.advertise<std_msgs::Float64>("servo", 1);
+	ros::NodeHandle nhPublic;
+	ros::Publisher motorPublisher = nhPublic.advertise<std_msgs::Float64>("motor", 1);
+	ros::Publisher servoPublisher = nhPublic.advertise<std_msgs::Float64>("servo", 1);
 
 	int receiverPort;
 	int senderPort;
 	double timeoutSeconds;
-	n.param("receiver_port", receiverPort, 10000);
-	n.param("sender_port", senderPort, 10001);
-	n.param("receiver_timeout", timeoutSeconds, 0.5);
+	ros::NodeHandle nhPrivate{"~"};
+	nhPrivate.param("receiver_port", receiverPort, 10000);
+	nhPrivate.param("sender_port", senderPort, 10001);
+	nhPrivate.param("receiver_timeout", timeoutSeconds, 0.5);
 
 	auto timeout = duration(timeoutSeconds);
 
@@ -49,12 +50,12 @@ int main(int argc, char **argv)
 			msg.data = controlValue;
 			if (controlType == MOTOR_CONTROL_TYPE)
 			{
-				ROS_DEBUG("received motor value: %f", controlValue);
+				ROS_DEBUG_STREAM(ros::this_node::getName() << ": motor=" << msg.data);
 				motorPublisher.publish(msg);
 			}
 			else if (controlType == SERVO_CONTROL_TYPE)
 			{
-				ROS_DEBUG("received servo value: %f", controlValue);
+				ROS_DEBUG_STREAM(ros::this_node::getName() << ": servo=" << msg.data);
 				servoPublisher.publish(msg);
 			}
 		});
