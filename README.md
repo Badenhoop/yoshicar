@@ -6,9 +6,7 @@ Software for a self-driving robocar using ROS
 1. setup IMU
 2. setup ros with python 3 correctly
 3. setup static IP address
-4. configure motor and braking
-5. add ros config/params to RemoteControl package instead of C++ constants
-6. implement VESC
+4. implement VESC
    1. automated speed measuring tool:
       1. use webcam to track lines recognized with opencv
       2. program takes distance between lines as input
@@ -18,7 +16,20 @@ Software for a self-driving robocar using ROS
    2. figure out steering angle
       1. put car against wall
       2. use LIDAR to measure distance
-7. navigation stack:
+5. navigation stack:
    1. setup tf
    2. move_base:
       1. plugin teb_local_planner
+   
+# Notes
+
+## ESC
+
+The ESC is a little weird because it has two backword drive modes.
+When using equal power, the car drives faster in backwards than in forwards.
+This can be overcome by hitting neutral very quickly after going backwards and then going backwards again.
+So it looks like:
+
+backwards -> neutral -> backwards
+
+Then the car drives considerably slower backwards.
