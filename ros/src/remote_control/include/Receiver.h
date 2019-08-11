@@ -8,7 +8,6 @@
 #include <asionet/DatagramReceiver.h>
 #include <asionet/DatagramSender.h>
 #include <asionet/Timer.h>
-#include "Common.h"
 #include "Message.h"
 
 namespace remoteControl
@@ -22,22 +21,26 @@ public:
 
 	Receiver(
 		asionet::Context & context,
+		std::uint16_t receiverPort,
+		std::uint16_t senderPort,
 		asionet::time::Duration connectionTimeout,
 		ConnectionTimeoutCallback connectionTimeoutCallback,
 		ControlCallback controlCallback)
 		: context(context)
-		, receiver(context, RECEIVER_PORT)
+		, senderPort(senderPort)
+		, receiver(context, receiverPort)
 		, sender(context)
 		, timer(context)
 		, connectionTimeout(connectionTimeout)
-		, connectionTimeoutCallback(connectionTimeoutCallback)
-		, controlCallback(controlCallback)
+		, connectionTimeoutCallback(std::move(connectionTimeoutCallback))
+		, controlCallback(std::move(controlCallback))
 	{}
 
 	void run();
 
 private:
 	asionet::Context & context;
+	std::uint16_t senderPort;
 	asionet::DatagramReceiver<ControlMessage> receiver;
 	asionet::DatagramSender<ResponseMessage> sender;
 	asionet::Timer timer;

@@ -10,18 +10,18 @@ def callback(data, args):
     kit.continuous_servo[channel].throttle = value
     
 def main():
-    rospy.init_node('pwm')
+    rospy.init_node('pwm_node')
 
-    motor_channel = rospy.get_param('pwm/motor_channel', 0)
-    servo_channel = rospy.get_param('pwm/servo_channel', 1)
+    motor_channel = rospy.get_param('motor_channel', 0)
+    servo_channel = rospy.get_param('servo_channel', 1)
     rospy.loginfo('motor_channel: %d', motor_channel)
 
     kit = ServoKit(channels=16)
     kit.continuous_servo[motor_channel].set_pulse_width_range(1000, 2000)
     kit.continuous_servo[servo_channel].set_pulse_width_range(1000, 2000)
 
-    rospy.Subscriber("pwm/motor", Float64, callback, (kit, motor_channel, 'motor'))
-    rospy.Subscriber("pwm/servo", Float64, callback, (kit, servo_channel, 'servo'))
+    rospy.Subscriber("motor", Float64, callback, (kit, motor_channel, 'motor'))
+    rospy.Subscriber("servo", Float64, callback, (kit, servo_channel, 'servo'))
     rospy.spin()
   
 if __name__ == '__main__':

@@ -11,7 +11,6 @@
 #include <asionet/DatagramSender.h>
 #include <asionet/Timer.h>
 #include <asionet/Monitor.h>
-#include "Common.h"
 #include "Message.h"
 #include <unordered_map>
 
@@ -21,11 +20,15 @@ namespace remoteControl
 class Sender : public std::enable_shared_from_this<Sender>
 {
 public:
-	Sender(asionet::Context & context, const std::string & remoteAddress)
-		: receiver(context, SENDER_PORT)
+	Sender(
+		asionet::Context & context,
+		const std::string & receiverAddress,
+		std::uint16_t receiverPort,
+		std::uint16_t senderPort)
+		: receiver(context, senderPort)
 		, sender(context)
 		, timer(context)
-		, receiverEndpoint(boost::asio::ip::address::from_string(remoteAddress), RECEIVER_PORT)
+		, receiverEndpoint(boost::asio::ip::address::from_string(receiverAddress), receiverPort)
 	{}
 
 	void setControlValue(int controlType, double controlValue);

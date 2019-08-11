@@ -59,8 +59,8 @@ def create_joystick():
 
 def main():
     rospy.init_node('remote_control_gui')
-    motor_pub = rospy.Publisher('remote_control/motor', Float64, queue_size=10)
-    servo_pub = rospy.Publisher('remote_control/servo', Float64, queue_size=10)
+    motor_pub = rospy.Publisher('motor', Float64, queue_size=10)
+    servo_pub = rospy.Publisher('servo', Float64, queue_size=10)
 
     FPS = 60
     pygame.init()

@@ -1,0 +1,4 @@
+receiver_timeout: 0.5
+receiver_address: 192.168.2.222
+receiver_port: 10000
+sender_port: 10001

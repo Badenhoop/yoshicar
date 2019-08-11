@@ -1,5 +1,5 @@
 <launch>
-	<node pkg="pwm" name="pwm" type="pwm_node.py" output="screen">
-		<rosparam file="$(find car)/config/pwm.yaml" command="load"/>
+	<node pkg="pwm" type="pwm_node.py" name="pwm" output="screen">
+		<rosparam file="$(find car)/config/pwm.yaml" command="load" />
 	</node>
 </launch>

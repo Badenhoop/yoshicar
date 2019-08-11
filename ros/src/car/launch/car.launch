@@ -1,5 +1,5 @@
 <launch>
 	<group ns="car">
-		<include file="$(find car)/launch/pwm.xml"/>
+		<include file="$(find car)/launch/pwm.xml" />
 	</group>
 </launch>

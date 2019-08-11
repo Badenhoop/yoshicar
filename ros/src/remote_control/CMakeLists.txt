@@ -21,7 +21,6 @@ set(SOURCE_FILES
         include/json.hpp
         include/Message.h
         include/Receiver.h
-        include/Common.h
         include/Sender.h
         src/Receiver.cpp
         src/Sender.cpp)
