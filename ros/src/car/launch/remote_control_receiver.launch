@@ -1,7 +1,7 @@
 <launch>
     <group ns="remote_control_receiver">
         <include file="$(find car)/launch/pwm.xml" />
-        <node pkg="remote_control" type="ReceiverNode" name="receiver">
+        <node pkg="remote_control" type="receiver_node" name="receiver">
             <rosparam file="$(find car)/config/remote_control.yaml" command="load" />
         </node>
     </group>

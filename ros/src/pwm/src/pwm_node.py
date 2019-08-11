@@ -14,7 +14,6 @@ def main():
 
     motor_channel = rospy.get_param('motor_channel', 0)
     servo_channel = rospy.get_param('servo_channel', 1)
-    rospy.loginfo('motor_channel: %d', motor_channel)
 
     kit = ServoKit(channels=16)
     kit.continuous_servo[motor_channel].set_pulse_width_range(1000, 2000)
