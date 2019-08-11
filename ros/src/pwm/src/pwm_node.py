@@ -10,7 +10,7 @@ def callback(data, args):
     kit.continuous_servo[channel].throttle = value
     
 def main():
-    rospy.init_node('pwm_node', log_level=rospy.DEBUG)
+    rospy.init_node('pwm_node')
 
     motor_channel = rospy.get_param('~motor_channel', 0)
     servo_channel = rospy.get_param('~servo_channel', 1)
