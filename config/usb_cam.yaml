@@ -5,3 +5,5 @@ pixel_format: "yuyv"
 camera_frame_id: "usb_cam"
 io_method: "mmap"
 framerate: 30
+autofocus: false
+focus: 51
