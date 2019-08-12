@@ -1,0 +1,6 @@
+<launch>
+	<group ns="car">
+		<include file="$(find car)/launch/remote_control_receiver.launch" />
+		<include file="$(find car)/launch/usb_cam.xml" />
+	</group>
+</launch>
