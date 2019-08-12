@@ -1,1 +1,2 @@
-imu
+bosch_imu_driver
+usb_cam

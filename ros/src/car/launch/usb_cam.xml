@@ -1,0 +1,7 @@
+<launch>
+	<node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen">
+		<rosparam file="$(find car)/config/usb_cam.yaml" />
+		<remap from="usb_cam/camera_info" to="camera/camera_info" />
+		<remap from="usb_cam/image_raw" to="camera/image_raw" />
+	</node>
+</launch>
