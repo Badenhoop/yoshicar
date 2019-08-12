@@ -1,0 +1,4 @@
+- git: {local-name: src/remote_control, version: master, uri: 'https://github.com/Badenhoop/remote_control.git'}
+- git: {local-name: src/imu, version: master, uri: 'https://github.com/mdrwiega/bosch_imu_driver.git'}
+- git: {local-name: src/usb_cam, version: master, uri: 'https://github.com/ros-drivers/usb_cam.git'}
+- git: {local-name: src/lidar, version: master, uri: 'https://github.com/Slamtec/rplidar_ros.git'}

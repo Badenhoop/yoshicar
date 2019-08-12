@@ -1,7 +1,7 @@
 <launch>
     <group ns="remote_control_sender">
         <node pkg="remote_control" type="sender_node" name="sender">
-            <rosparam file="$(find car)/config/remote_control.yaml" command="load" />
+            <rosparam file="$(find yoshicar)/config/remote_control.yaml" command="load" />
         </node>
         <node pkg="remote_control" type="remote_control_gui.py" name="sender_gui" />
     </group>
