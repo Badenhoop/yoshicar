@@ -1,7 +1,7 @@
 <launch>
     <group ns="remote_control_receiver">
         <include file="$(find yoshicar)/launch/pwm.xml" />
-        <node pkg="remote_control" type="receiver_node" name="receiver">
+        <node pkg="remote_control" type="receiver_node" name="receiver" output="screen">
             <rosparam file="$(find yoshicar)/config/remote_control.yaml" command="load" />
         </node>
     </group>
