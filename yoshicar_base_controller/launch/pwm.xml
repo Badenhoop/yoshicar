@@ -1,0 +1,5 @@
+<launch>
+	<node pkg="yoshicar_control" type="pwm_node.py" name="pwm" output="screen">
+		<rosparam file="$(find yoshicar_control)/config/pwm.yaml" command="load" />
+	</node>
+</launch>

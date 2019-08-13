@@ -2,3 +2,4 @@ receiver_timeout: 0.5
 receiver_address: 192.168.178.58
 receiver_port: 10000
 sender_port: 10001
+sender_interval: 0.05

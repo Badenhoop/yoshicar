@@ -1,0 +1,8 @@
+<launch>
+    <node pkg="yoshicar_base_controller" type="hardware_interface_node" name="hardware_interface" output="screen">
+        <rosparam file="$(find yoshicar_base_controller)/config/hardware_interface.yaml" command="load" />
+    </node>
+
+    <rosparam file="$(find yoshicar_base_controller)/config/base_controller.yaml" command="load" />
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="ackermann_steering_controller joint_state_controller"/>
+</launch>
