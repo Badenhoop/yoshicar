@@ -1,0 +1,11 @@
+serial_port: "/dev/ttyUSB0"
+serial_baudrate: 115200
+frame_id: "laser"
+inverted: false
+angle_compensate: true
+
+# available scan modes:
+# - Standard: max_distance: 12.0 m, Point number: 2.0K
+# - Express: max_distance: 12.0 m, Point number: 4.0K
+# - Boost: max_distance: 12.0 m, Point number: 8.0K
+scan_mode: "Boost"

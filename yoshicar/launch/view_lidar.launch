@@ -1,0 +1,5 @@
+<launch>
+  <include file="$(find yoshicar)/launch/lidar.xml" />
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find yoshicar)/rviz/lidar.rviz" />
+</launch>

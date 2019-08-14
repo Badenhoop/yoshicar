@@ -1,0 +1,5 @@
+<launch>
+	<node pkg="rplidar_ros" type="rplidarNode" name="lidar_node" output="screen">
+		<rosparam file="$(find yoshicar)/config/lidar.yaml" command="load" />
+	</node>
+</launch>
