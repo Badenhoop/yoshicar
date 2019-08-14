@@ -57,7 +57,7 @@ void HardwareInterface::read()
 
 void HardwareInterface::write()
 {
-	// TODO: handle brake and backwards driving behavior
+	// TODO: handle brake and backwards driving behavior of ESC
 	double translationalVelocity = processMinVelocities(rearWheelCommand);
 	double rotationalVelocity = frontSteerCommand;
 
