@@ -22,3 +22,7 @@
     local-name: src/web_video_server
     version: develop
     uri: 'https://github.com/RobotWebTools/web_video_server.git'
+- git:
+    local-name: src/laser_filters
+    version: latest
+    uri: 'https://github.com/ros-perception/laser_filters.git'
