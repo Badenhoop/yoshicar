@@ -9,9 +9,8 @@ int main(int argc, char ** argv)
 {
 	ros::init(argc, argv, "hardware_interface_node");
 
-	ros::NodeHandle nhPrivate{"~"};
 	double updateRateHz;
-	nhPrivate.param("update_rate", updateRateHz);
+	ros::param::get("~update_rate", updateRateHz);
 	ros::Rate rate{updateRateHz};
 	ros::Duration period{1.0 / updateRateHz};
 

@@ -1,6 +1,5 @@
 <launch>
 	<group ns="yoshicar">
-		<include file="$(find yoshicar)/launch/pwm.xml" />
-		<include file="$(find yoshicar)/launch/usb_cam.xml" />
+		<include file="$(find yoshicar)/launch/static_tf.xml" />
 	</group>
 </launch>
