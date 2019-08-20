@@ -10,14 +10,13 @@ namespace yoshicar
 
 HardwareInterface::HardwareInterface()
 {
-	ros::NodeHandle nhPrivate{"~"};
-	nhPrivate.param("velocity_gain", velocityGain);
-	nhPrivate.param("velocity_offset", velocityOffset);
-	nhPrivate.param("steering_angle_gain", steeringAngleGain);
-	nhPrivate.param("steering_angle_offset", steeringAngleOffset);
-	nhPrivate.param("min_forward_velocity", minForwardVelocity);
-	nhPrivate.param("min_backward_velocity", minBackwardVelocity);
-	nhPrivate.param("wheel_base", wheelBase);
+	ros::param::get("~velocity_gain", velocityGain);
+	ros::param::get("~velocity_offset", velocityOffset);
+	ros::param::get("~steering_angle_gain", steeringAngleGain);
+	ros::param::get("~steering_angle_offset", steeringAngleOffset);
+	ros::param::get("~min_forward_velocity", minForwardVelocity);
+	ros::param::get("~min_backward_velocity", minBackwardVelocity);
+	ros::param::get("~wheel_base", wheelBase);
 
 	motorPublisher = nh.advertise<std_msgs::Float64>("motor", 1);
 	servoPublisher = nh.advertise<std_msgs::Float64>("servo", 1);
