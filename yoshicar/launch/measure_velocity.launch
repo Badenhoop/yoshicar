@@ -1,5 +1,7 @@
 <launch>
-	<include file="$(find yoshicar_base_controller)/launch/pwm.xml" />
+  <!--  Do not include the pwm node here because we want the car to be stopped when Ctrl+C is pressed!
+        Otherwise it could be the case that the pwm node stops before our application can tell the motor to stop.
+    -->
 	<include file="$(find yoshicar)/launch/sensors/lidar.xml" />
 	<rosparam file="$(find ackermann2actuator)/config/ackermann2actuator.yaml" command="load" />
 	<node pkg="ackermann2actuator" type="velocity_measuring_node" name="velocity_measuring_node" output="screen">
