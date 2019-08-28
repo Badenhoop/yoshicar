@@ -1,0 +1,13 @@
+<launch>
+    <!--
+        Do not include the pwm node here because we want the car to be stopped when Ctrl+C is pressed!
+        Otherwise it could be the case that the pwm node stops before our application can tell the motor to stop.
+    -->
+    <include file="$(find yoshicar)/launch/sensors/lidar.xml" />
+    <rosparam file="$(find ackermann2actuator)/config/ackermann2actuator.yaml" command="load" />
+    <node pkg="ackermann2actuator" type="turning_radius_measuring_node" name="turning_radius_measuring_node" output="screen">
+        <param name="output_measurement_series" value="/home/yoshicar/tmp/measurements/test.csv" />
+        <remap from="velocity_actuator" to="motor" />
+        <remap from="steering_actuator" to="servo" />
+    </node>
+</launch>
