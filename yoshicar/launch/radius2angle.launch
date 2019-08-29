@@ -1,0 +1,11 @@
+<launch>
+    <include file="$(find yoshicar)/launch/static_tf.xml" />
+    <rosparam file="$(find yoshicar)/config/common.yaml" command="load" />
+    <node pkg="ackermann2actuator" type="radius2angle_node.py" name="radius2angle" output="screen">
+        <param name="input_measurement_series" value="/home/philipp/tmp/measurements/test.csv" />
+        <param name="output_measurement_series" value="/home/philipp/tmp/measurements/angles.csv" />
+        <param name="base_frame" value="base_link" />
+        <param name="laser_frame" value="laser" />
+        <remap from="~wheel_base" to="/common/wheel_base" />
+    </node>
+</launch>
