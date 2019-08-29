@@ -1,0 +1,9 @@
+<launch>
+    <arg name="in" />
+    <arg name="out" />
+    
+    <node pkg="ackermann2actuator" type="measurements2params_node.py" name="measurements2params" output="screen">
+        <param name="measurement_series" value="$(arg in)" />
+        <param name="params" value="$(arg out)" />
+    </node>
+</launch>
