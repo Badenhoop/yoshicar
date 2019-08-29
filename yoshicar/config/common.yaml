@@ -1,0 +1,4 @@
+common:
+  # TODO: figure out these parameters
+  wheel_base: 0.5
+  wheel_radius: 0.2

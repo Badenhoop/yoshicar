@@ -1,8 +1,14 @@
 <launch>
+    <rosparam file="$(find yoshicar)/config/common.yaml" />
+
     <node pkg="yoshicar_base_controller" type="hardware_interface_node" name="hardware_interface" output="screen">
         <rosparam file="$(find yoshicar_base_controller)/config/hardware_interface.yaml" command="load" />
+        <remap from="~wheel_base" to="/common/wheel_base">
     </node>
 
     <rosparam file="$(find yoshicar_base_controller)/config/base_controller.yaml" command="load" />
+    <remap from="/ackermann_steering_controller/wheel_separation_h" to="/common/wheel_base" />
+    <remap from="/ackermann_steering_controller/wheel_radius" to="/common/wheel_radius" />
+
     <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="ackermann_steering_controller joint_state_controller"/>
 </launch>

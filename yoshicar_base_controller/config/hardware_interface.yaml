@@ -4,5 +4,4 @@ steering_angle_gain: 0.0
 steering_angle_offset: 0.0
 min_foward_velocity: 0.0
 min_backward_velocity: 0.0
-wheel_base: 0.0
 update_rate: 50.0
