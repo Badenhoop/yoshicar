@@ -1,6 +1,8 @@
 # yoshicar
 Software for a self-driving robocar using ROS
 
+![pic](docs/yoshicar.jpg)
+
 # TODO
 
 1. setup IMU
