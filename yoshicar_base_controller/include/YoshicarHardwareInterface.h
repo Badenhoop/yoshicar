@@ -12,47 +12,46 @@
 
 namespace yoshicar
 {
-
 class HardwareInterface : public hardware_interface::RobotHW
 {
 public:
-	HardwareInterface();
-	void read();
-	void write();
+  HardwareInterface();
+  void read();
+  void write();
 
 private:
-	double velocityGain;
-	double velocityOffset;
-	double steeringAngleGain;
-	double steeringAngleOffset;
+  double velocityGain;
+  double velocityOffset;
+  double steeringAngleGain;
+  double steeringAngleOffset;
 
-	double minForwardVelocity;
-	double minBackwardVelocity;
+  double minForwardVelocity;
+  double minBackwardVelocity;
 
-	double wheelBase;
+  double wheelBase;
 
-	ros::NodeHandle nh;
-	ros::Publisher motorPublisher;
-	ros::Publisher servoPublisher;
+  ros::NodeHandle nh;
+  ros::Publisher motorPublisher;
+  ros::Publisher servoPublisher;
 
-	hardware_interface::JointStateInterface jointStateInterface;
-	hardware_interface::VelocityJointInterface velocityJointInterface;
-	hardware_interface::PositionJointInterface positionJointInterface;
+  hardware_interface::JointStateInterface jointStateInterface;
+  hardware_interface::VelocityJointInterface velocityJointInterface;
+  hardware_interface::PositionJointInterface positionJointInterface;
 
-	double rearWheelPosition;
-	double rearWheelVelocity;
-	double rearWheelEffort;
-	double rearWheelCommand;
+  double rearWheelPosition;
+  double rearWheelVelocity;
+  double rearWheelEffort;
+  double rearWheelCommand;
 
-	double frontSteerPosition;
-	double frontSteerVelocity;
-	double frontSteerEffort;
-	double frontSteerCommand;
+  double frontSteerPosition;
+  double frontSteerVelocity;
+  double frontSteerEffort;
+  double frontSteerCommand;
 
-	double convertTransRotVelToSteeringAngle(double translationalVelocity, double rotationalVelocity);
-	double processMinVelocities(double velocity);
+  double convertTransRotVelToSteeringAngle(double translationalVelocity, double rotationalVelocity);
+  double processMinVelocities(double velocity);
 };
 
-}
+}  // namespace yoshicar
 
-#endif //YOSHICAR_CONTROL_YOSHICARHARDWAREINTERFACE_H
+#endif  // YOSHICAR_CONTROL_YOSHICARHARDWAREINTERFACE_H

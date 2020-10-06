@@ -1,28 +1,12 @@
 - git:
-    local-name: src/remote_control
+    local-name: remote_control
     version: master
     uri: 'https://github.com/Badenhoop/remote_control.git'
 - git:
-    local-name: src/imu
+    local-name: imu
     version: master
     uri: 'https://github.com/mdrwiega/bosch_imu_driver.git'
 - git:
-    local-name: src/usb_cam
-    version: develop
-    uri: 'https://github.com/ros-drivers/usb_cam.git'
-- git:
-    local-name: src/lidar
+    local-name: lidar
     version: master
     uri: 'https://github.com/Slamtec/rplidar_ros.git'
-- git:
-    local-name: src/async_web_server_cpp
-    version: develop
-    uri: 'https://github.com/GT-RAIL/async_web_server_cpp.git'
-- git:
-    local-name: src/web_video_server
-    version: develop
-    uri: 'https://github.com/RobotWebTools/web_video_server.git'
-- git:
-    local-name: src/laser_filters
-    version: indigo-devel
-    uri: 'https://github.com/Badenhoop/laser_filters.git'
