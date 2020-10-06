@@ -3,10 +3,10 @@
     version: master
     uri: 'https://github.com/Badenhoop/remote_control.git'
 - git:
-    local-name: imu
+    local-name: ros_imu_bno055
     version: master
-    uri: 'https://github.com/mdrwiega/bosch_imu_driver.git'
+    uri: 'https://github.com/RoboticArts/ros_imu_bno055.git'
 - git:
-    local-name: lidar
+    local-name: rplidar_ros
     version: master
     uri: 'https://github.com/Slamtec/rplidar_ros.git'

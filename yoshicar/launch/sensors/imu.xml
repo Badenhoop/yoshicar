@@ -1,0 +1,7 @@
+<launch>
+	<node pkg="ros_imu_bno055" type="imu_ros.py" name="ros_imu_bno055_node" output="screen">
+        <rosparam file="$(find yoshicar)/config/sensors/imu.yaml" command="load" />
+    </node>
+</launch>
+
+

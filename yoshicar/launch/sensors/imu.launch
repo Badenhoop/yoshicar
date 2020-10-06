@@ -1,7 +1,0 @@
-<launch>
-	<node pkg="bosch_imu_driver" type="bosch_imu_node.py" name="bosch_imu_node" output="screen">
-		<rosparam file="$(find yoshicar)/config/sensors/imu.yaml" command="load"/>
-	</node>
-</launch>
-
-
