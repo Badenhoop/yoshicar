@@ -19,7 +19,7 @@ find_package(catkin REQUIRED COMPONENTS
 set(SOURCE_FILES
   include/YoshicarHardwareInterface.h
   src/YoshicarHardwareInterface.cpp
-)
+        include/MotorStateMachine.h)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)

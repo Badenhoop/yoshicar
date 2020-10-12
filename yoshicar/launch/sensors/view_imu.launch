@@ -1,0 +1,13 @@
+<launch>
+
+	<rosparam file="$(find yoshicar)/config/sensors/imu.yaml" command="load" />
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="link1_broadcaster" args="0 0 0 0 0 0 1 fixed_frame imu_link" />  
+
+    <node pkg="ros_imu_bno055" type="imu_ros.py" name="ros_imu_bno055_node" output="screen">
+        <rosparam file="$(find yoshicar)/config/sensors/imu.yaml" command="load" />
+    </node>
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ros_imu_bno055)/utils/view_imu_rviz.rviz" />
+
+</launch>

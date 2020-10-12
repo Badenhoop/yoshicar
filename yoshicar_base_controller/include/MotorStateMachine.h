@@ -1,3 +1,6 @@
+#ifndef YOSHICAR_BASE_CONTROLLER_MOTORSTATEMACHINE_H
+#define YOSHICAR_BASE_CONTROLLER_MOTORSTATEMACHINE_H
+
 #include <ros/ros.h>
 
 namespace yoshicar
@@ -7,7 +10,7 @@ struct VelocityEstimate
 {
     double velocity;
     double variance;
-}
+};
 
 class MotorState
 {
@@ -27,7 +30,7 @@ public:
 
 protected:
     ros::Time startTime;
-}
+};
 
 class StoppedMotorState : public MotorState 
 {
@@ -65,7 +68,7 @@ public:
         estimate.variance = 0.01;
         return estimate;
     }
-}
+};
 
 class ReleasedBrakeMotorState : public MotorState 
 {
@@ -79,7 +82,7 @@ public:
 
     double getMotorCommand() const;
     VelocityEstimate getVelocityEstimate() const;
-}
+};
 
 class ForwardDrivingMotorState : public MotorState 
 {
@@ -93,7 +96,7 @@ public:
 
     double getMotorCommand() const;
     VelocityEstimate getVelocityEstimate() const;
-}
+};
 
 class ForwardBrakingMotorState : public MotorState 
 {
@@ -107,7 +110,7 @@ public:
 
     double getMotorCommand() const;
     VelocityEstimate getVelocityEstimate() const;
-}
+};
 
 class ForwardCommandMotorState : public MotorState 
 {
@@ -121,7 +124,7 @@ public:
 
     double getMotorCommand() const;
     VelocityEstimate getVelocityEstimate() const;
-}
+};
 
 class ReverseDrivingMotorState : public MotorState 
 {
@@ -135,7 +138,7 @@ public:
 
     double getMotorCommand() const;
     VelocityEstimate getVelocityEstimate() const;
-}
+};
 
 class ReverseBrakingMotorState : public MotorState 
 {
@@ -183,6 +186,8 @@ private:
     void targetVelocityCallback(const std_msgs::Float64::ConstPtr& msg);
     void isDrivingCallback(const std_msgs::Float64::ConstPtr& msg);
     void updateCallback();
-}
+};
 
 }
+
+#endif  // YOSHICAR_BASE_CONTROLLER_MOTORSTATEMACHINE_H
