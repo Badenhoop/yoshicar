@@ -2,7 +2,7 @@
 // Created by philipp on 13.08.19.
 //
 
-#include "../include/YoshicarHardwareInterface.h"
+#include "../include/yoshicar_base_controller/YoshicarHardwareInterface.h"
 #include <std_msgs/Float64.h>
 
 namespace yoshicar

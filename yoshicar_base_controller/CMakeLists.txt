@@ -10,16 +10,25 @@ set(CMAKE_CXX_STANDARD 14)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  controller_manager
-  hardware_interface
-  roscpp
-  std_msgs
-)
+	controller_manager
+	hardware_interface
+	roscpp
+	std_msgs
+	yoshicar_msgs
+	sensor_msgs
+	)
 
 set(SOURCE_FILES
-  include/YoshicarHardwareInterface.h
-  src/YoshicarHardwareInterface.cpp
-        include/MotorStateMachine.h)
+	include/yoshicar_base_controller/YoshicarHardwareInterface.h
+	include/yoshicar_base_controller/MotorStateMachine.h
+	include/yoshicar_base_controller/ActuatorConfig.h
+	include/yoshicar_base_controller/ImuVelocityEstimator.h
+	include/yoshicar_base_controller/FusionVelocityEstimator.h
+	src/YoshicarHardwareInterface.cpp
+	src/MotorStateMachine.cpp
+	src/ActuatorConfig.cpp
+	src/ImuVelocityEstimator.cpp
+	src/FusionVelocityEstimator.cpp)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -111,10 +120,10 @@ set(SOURCE_FILES
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES yoshicar_control
-#  CATKIN_DEPENDS ackermann_steering_controller controller_manager hardware_interface roscpp
-#  DEPENDS system_lib
+	#  INCLUDE_DIRS include
+	#  LIBRARIES yoshicar_control
+	#  CATKIN_DEPENDS ackermann_steering_controller controller_manager hardware_interface roscpp
+	#  DEPENDS system_lib
 )
 
 ###########
@@ -124,7 +133,8 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-  ${catkin_INCLUDE_DIRS}
+	${catkin_INCLUDE_DIRS}
+	include
 )
 
 ## Declare a C++ library
@@ -154,8 +164,8 @@ add_dependencies(hardware_interface_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${c
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(hardware_interface_node
-   ${catkin_LIBRARIES}
-)
+	${catkin_LIBRARIES}
+	)
 
 #############
 ## Install ##
